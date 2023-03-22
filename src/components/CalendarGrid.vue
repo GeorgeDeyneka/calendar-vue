@@ -1,45 +1,63 @@
-<script setup></script>
+<script>
+import { subMonths, addMonths, eachDayOfInterval, format } from "date-fns";
+
+export default {
+  data() {
+    return {
+      startOfWeek: new Date(1970, 0, 5),
+      endOfWeek: new Date(1970, 0, 11),
+
+      currentMonth: new Date(),
+
+      days: [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+        21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+      ],
+    };
+  },
+
+  computed: {
+    daysOfWeek() {
+      return eachDayOfInterval({
+        start: this.startOfWeek,
+        end: this.endOfWeek,
+      });
+    },
+  },
+
+  methods: {
+    prevMonth() {
+      this.currentMonth = subMonths(this.currentMonth, 1);
+    },
+
+    nextMonth() {
+      this.currentMonth = addMonths(this.currentMonth, 1);
+    },
+
+    formatDate(date, formatStr) {
+      return format(date, formatStr);
+    },
+  },
+};
+</script>
 
 <template>
   <main class="container">
     <div class="calendar">
       <div class="calendar-header">
-        <div class="calendar-header__button">&lt;</div>
-        <div class="calendar-header__title">March 2023</div>
-        <div class="calendar-header__button">&gt;</div>
+        <div class="calendar-header__button" @click="prevMonth">&lt;</div>
+        <div class="calendar-header__title">
+          {{ formatDate(currentMonth, "MMMM yyyy") }}
+        </div>
+        <div class="calendar-header__button" @click="nextMonth">&gt;</div>
+      </div>
+      <div class="calendar-week-wrapper">
+        <div v-for="day in daysOfWeek" :key="day" class="calendar-week">
+          {{ formatDate(day, "E") }}
+        </div>
       </div>
       <div class="calendar-grid">
-        <div class="calendar-day">1</div>
-        <div class="calendar-day">2</div>
-        <div class="calendar-day">3</div>
-        <div class="calendar-day">4</div>
-        <div class="calendar-day">5</div>
-        <div class="calendar-day">6</div>
-        <div class="calendar-day">7</div>
-        <div class="calendar-day">8</div>
-        <div class="calendar-day">9</div>
-        <div class="calendar-day">10</div>
-        <div class="calendar-day">11</div>
-        <div class="calendar-day">12</div>
-        <div class="calendar-day">13</div>
-        <div class="calendar-day">14</div>
-        <div class="calendar-day">15</div>
-        <div class="calendar-day">16</div>
-        <div class="calendar-day">17</div>
-        <div class="calendar-day">18</div>
-        <div class="calendar-day">19</div>
-        <div class="calendar-day">20</div>
-        <div class="calendar-day">21</div>
-        <div class="calendar-day">22</div>
-        <div class="calendar-day">23</div>
-        <div class="calendar-day">24</div>
-        <div class="calendar-day">25</div>
-        <div class="calendar-day">26</div>
-        <div class="calendar-day">27</div>
-        <div class="calendar-day">28</div>
-        <div class="calendar-day">29</div>
-        <div class="calendar-day">30</div>
-        <div class="calendar-day">31</div>
+        <div v-for="day in days" :key="day" class="calendar-day">{{ day }}</div>
       </div>
     </div>
   </main>
@@ -59,6 +77,18 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
+
+  &-week-wrapper {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  &-week {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .calendar-header {
     display: flex;
