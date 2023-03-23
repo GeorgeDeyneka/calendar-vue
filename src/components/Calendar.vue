@@ -7,25 +7,17 @@ import {
   format,
 } from "date-fns";
 import CalendarHeader from "./header/CalendarHeader.vue";
+import CalendarSubheader from "./header/CalendarSubheader.vue";
 
 export default {
-  components: { CalendarHeader },
+  components: { CalendarHeader, CalendarSubheader },
   data() {
     return {
-      monday: new Date(1970, 0, 5),
-      sunday: new Date(1970, 0, 11),
       currentMonth: new Date(),
     };
   },
 
   computed: {
-    daysOfWeek() {
-      return eachDayOfInterval({
-        start: this.monday,
-        end: this.sunday,
-      });
-    },
-
     startOfMonth() {
       return startOfMonth(this.currentMonth);
     },
@@ -62,17 +54,7 @@ export default {
         @update:currentMonth="currentMonth = $event"
       />
 
-      <div class="calendar-subheader__week">
-        <div
-          v-for="day in daysOfWeek"
-          :key="day"
-          class="calendar-subheader__week-day"
-        >
-          <strong>
-            {{ formatDate(day, "E") }}
-          </strong>
-        </div>
-      </div>
+      <CalendarSubheader />
 
       <div class="calendar-grid">
         <div
@@ -103,21 +85,6 @@ export default {
   border: 1px solid #303030;
   border-radius: 5px;
   overflow: hidden;
-
-  &-subheader {
-    &__week {
-      display: grid;
-      gap: 1px;
-      padding: 0 1px;
-      grid-template-columns: repeat(7, 1fr);
-      background-image: linear-gradient(to right, #5979b3, #c2cbde);
-    }
-
-    &__week-day {
-      @include flex-center;
-      color: #101010;
-    }
-  }
 
   &-grid {
     display: grid;

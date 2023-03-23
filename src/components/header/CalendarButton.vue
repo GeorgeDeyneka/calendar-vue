@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-  <button class="header__button">
+  <button class="button">
     <component :is="innerComponent" />
   </button>
 </template>
@@ -18,14 +18,18 @@ export default {
 <style lang="scss">
 @import "@/assets/mixins.scss";
 
-.header {
-  &__button {
-    @include flex-center;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    min-width: 20px;
-    min-height: 20px;
+.button {
+  @include flex-center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  min-width: 20px;
+  min-height: 30px;
+  border-radius: 4px;
+  transition: background-color 100ms ease-in-out;
+
+  &:hover {
+    background-color: #444444;
   }
 }
 </style>
