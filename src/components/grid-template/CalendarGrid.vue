@@ -4,11 +4,15 @@ import {
   endOfMonth,
   subWeeks,
   eachDayOfInterval,
-  format,
 } from "date-fns";
+import CalendarItem from "./CalendarItem.vue";
 
 export default {
   props: ["currentMonth"],
+
+  components: {
+    CalendarItem,
+  },
 
   computed: {
     startOfMonth() {
@@ -30,26 +34,16 @@ export default {
       });
     },
   },
-
-  methods: {
-    formatDate(date, formatStr) {
-      return format(date, formatStr);
-    },
-  },
 };
 </script>
 
 <template>
   <div class="grid-template">
-    <div v-for="day in countDaysInMonth" :key="day" class="grid-template__day">
-      {{ formatDate(day, "d") }}
-    </div>
+    <CalendarItem v-for="day in countDaysInMonth" :key="day" :dayData="day" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/mixins.scss";
-
 .grid-template {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -57,19 +51,5 @@ export default {
   gap: 1px;
   background-color: #1a1b22;
   padding: 1px;
-
-  &__day {
-    @include flex-center;
-    font-size: 16px;
-    cursor: pointer;
-    height: 60px;
-    background-color: #2d2e34;
-    border-radius: 4px;
-    color: #d1d1d1;
-
-    &:hover {
-      background-color: #494d52;
-    }
-  }
 }
 </style>
