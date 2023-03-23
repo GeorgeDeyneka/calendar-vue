@@ -6,7 +6,7 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../components/CalendarGrid.vue"),
+      component: () => import("../components/Calendar.vue"),
     },
   ],
 });
