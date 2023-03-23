@@ -5,11 +5,10 @@
 </template>
 
 <style lang="scss" scoped>
+@import "../../assets/mixins.scss";
+
 .arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // Add mixin
+  @include flex-center;
   width: 20px;
   height: 20px;
   stroke: #b6b6b6;

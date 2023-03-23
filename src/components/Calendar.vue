@@ -3,16 +3,13 @@ import {
   startOfMonth,
   endOfMonth,
   subWeeks,
-  subMonths,
-  addMonths,
   eachDayOfInterval,
   format,
 } from "date-fns";
-import IconArrowLeft from "./icons/IconArrowLeft.vue";
-import IconArrowRight from "./icons/IconArrowRight.vue";
+import CalendarHeader from "./header/CalendarHeader.vue";
 
 export default {
-  components: { IconArrowLeft, IconArrowRight },
+  components: { CalendarHeader },
   data() {
     return {
       monday: new Date(1970, 0, 5),
@@ -50,14 +47,6 @@ export default {
   },
 
   methods: {
-    prevMonth() {
-      this.currentMonth = subMonths(this.currentMonth, 1);
-    },
-
-    nextMonth() {
-      this.currentMonth = addMonths(this.currentMonth, 1);
-    },
-
     formatDate(date, formatStr) {
       return format(date, formatStr);
     },
@@ -68,20 +57,11 @@ export default {
 <template>
   <main class="container">
     <div class="calendar">
-      <div class="calendar-header">
-        <div class="calendar-header__months">
-          {{ formatDate(currentMonth, "MMMM yyyy") }}
-        </div>
+      <CalendarHeader
+        :currentMonth="currentMonth"
+        @update:currentMonth="currentMonth = $event"
+      />
 
-        <div class="calendar-header__buttons">
-          <div class="calendar-header__button" @click="prevMonth">
-            <icon-arrow-left />
-          </div>
-          <div class="calendar-header__button" @click="nextMonth">
-            <icon-arrow-right />
-          </div>
-        </div>
-      </div>
       <div class="calendar-subheader__week">
         <div
           v-for="day in daysOfWeek"
@@ -100,7 +80,7 @@ export default {
           :key="day"
           class="calendar-grid__day"
         >
-          {{ formatDate(day, 'd') }}
+          {{ formatDate(day, "d") }}
         </div>
       </div>
     </div>
@@ -108,6 +88,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@import "@/assets/mixins.scss";
 .container {
   margin: 0 auto;
   padding: 50px 0;
@@ -123,46 +104,17 @@ export default {
   border-radius: 5px;
   overflow: hidden;
 
-  &-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #2d2e34;
-    color: #b6b6b6;
-    font-weight: bold;
-
-    &__buttons {
-      display: flex;
-      gap: 20px;
-    }
-
-    &__button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    &__months {
-      text-align: center;
-      font-size: 18px;
-    }
-  }
-
   &-subheader {
     &__week {
       display: grid;
       gap: 1px;
-      padding: 0 5px;
+      padding: 0 1px;
       grid-template-columns: repeat(7, 1fr);
       background-image: linear-gradient(to right, #5979b3, #c2cbde);
     }
 
     &__week-day {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-center;
       color: #101010;
     }
   }
@@ -176,9 +128,7 @@ export default {
     padding: 1px;
 
     &__day {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-center;
       font-size: 16px;
       cursor: pointer;
       height: 60px;
