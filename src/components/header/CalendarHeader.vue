@@ -2,7 +2,7 @@
 import { subMonths, addMonths, format } from "date-fns";
 import IconArrowLeft from "../icons/IconArrowLeft.vue";
 import IconArrowRight from "../icons/IconArrowRight.vue";
-import CalendarButton from "./CalendarButton.vue";
+import CalendarButton from "./Button.vue";
 
 export default {
   components: { CalendarButton },

@@ -36,7 +36,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/mixins.scss";
 
 .subheader {
