@@ -30,8 +30,7 @@ export default {
 <template>
   <div class="item" :class="{ 'previous-month': isPreviousMonth }">
     {{ formatDate(dayData, "d") }}
-    <div v-if="events.length" class="event-point">
-    </div>
+    <div v-if="events.length" class="event-point"></div>
   </div>
 </template>
 
@@ -51,19 +50,19 @@ export default {
   &:hover {
     background-color: #494d52;
   }
+}
 
-  .previous-month {
-    color: #595959;
-  }
+.event-point {
+  background-color: #318eb1;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
 
-  .event-point {
-    background-color: #318eb1;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
+.previous-month {
+  color: #595959;
 }
 </style>
