@@ -2,16 +2,38 @@
 import {
   startOfMonth,
   endOfMonth,
-  subWeeks,
+  startOfWeek,
+  isBefore,
   eachDayOfInterval,
 } from "date-fns";
 import CalendarItem from "./CalendarItem.vue";
 
 export default {
-  props: ["currentMonth"],
+  props: {
+    currentMonth: {
+      type: Date,
+      required: true,
+    },
+  },
+
+  data() {
+    events: [
+      {
+        start: new Date("2023-03-26T14:00:00+02:00"),
+        end: new Date("2023-03-26T15:00:00+02:00"),
+        title: "Meeting",
+      },
+    ];
+  },
 
   components: {
     CalendarItem,
+  },
+
+  methods: {
+    isPreviousMonth(date) {
+      return isBefore(date, this.startOfMonth);
+    },
   },
 
   computed: {
@@ -23,13 +45,9 @@ export default {
       return endOfMonth(this.currentMonth);
     },
 
-    monthPrevWeek() {
-      return subWeeks(this.startOfMonth, 1);
-    },
-
     countDaysInMonth() {
       return eachDayOfInterval({
-        start: this.startOfMonth,
+        start: startOfWeek(this.startOfMonth, { weekStartsOn: 1 }),
         end: this.endOfMonth,
       });
     },
@@ -39,7 +57,12 @@ export default {
 
 <template>
   <div class="grid-template">
-    <CalendarItem v-for="day in countDaysInMonth" :key="day" :dayData="day" />
+    <CalendarItem
+      v-for="day in countDaysInMonth"
+      :key="day"
+      :dayData="day"
+      :isPreviousMonth="isPreviousMonth(day)"
+    />
   </div>
 </template>
 
@@ -47,7 +70,7 @@ export default {
 .grid-template {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   gap: 1px;
   background-color: #1a1b22;
   padding: 1px;

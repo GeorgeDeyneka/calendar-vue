@@ -2,7 +2,17 @@
 import { format } from "date-fns";
 
 export default {
-  props: ["dayData"],
+  props: {
+    dayData: {
+      type: Date,
+      required: true,
+    },
+
+    isPreviousMonth: {
+      type: Boolean,
+      required: true,
+    },
+  },
 
   methods: {
     formatDate(date, formatStr) {
@@ -13,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <div class="item">
+  <div class="item" :class="{ 'previous-month': isPreviousMonth }">
     {{ formatDate(dayData, "d") }}
   </div>
 </template>
@@ -32,6 +42,10 @@ export default {
 
   &:hover {
     background-color: #494d52;
+  }
+
+  &.previous-month {
+    color: #595959;
   }
 }
 </style>
