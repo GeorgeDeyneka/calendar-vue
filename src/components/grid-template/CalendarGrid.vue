@@ -8,6 +8,7 @@ import {
   isSameDay,
 } from "date-fns";
 import CalendarItem from "./CalendarItem.vue";
+import ItemDetails from "./ItemDetails.vue";
 
 export default {
   props: {
@@ -26,11 +27,14 @@ export default {
           title: "Meeting",
         },
       ],
+      showDetails: false,
+      selectedDay: null,
     };
   },
 
   components: {
     CalendarItem,
+    ItemDetails,
   },
 
   methods: {
@@ -40,6 +44,10 @@ export default {
 
     getEvents(date) {
       return this.events.filter((event) => isSameDay(event.start, date));
+    },
+
+    isSelected(day, selectedDay) {
+      return isSameDay(day, selectedDay);
     },
   },
 
@@ -66,12 +74,20 @@ export default {
   <div class="grid-template">
     <CalendarItem
       v-for="day in countDaysInMonth"
+      @click.native="(showDetails = true), (selectedDay = day)"
       :key="day"
       :dayData="day"
       :isPreviousMonth="isPreviousMonth(day)"
       :events="getEvents(day)"
+      :isSelectedDay="isSelected(day, selectedDay)"
     />
   </div>
+  <ItemDetails
+    v-if="showDetails"
+    :dayInfo="selectedDay"
+    :events="getEvents(selectedDay)"
+    @close-details="(showDetails = false), (selectedDay = null)"
+  />
 </template>
 
 <style lang="scss" scoped>
