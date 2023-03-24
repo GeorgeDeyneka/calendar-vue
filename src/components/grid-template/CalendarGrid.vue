@@ -5,6 +5,7 @@ import {
   startOfWeek,
   isBefore,
   eachDayOfInterval,
+  isSameDay,
 } from "date-fns";
 import CalendarItem from "./CalendarItem.vue";
 
@@ -38,9 +39,7 @@ export default {
     },
 
     getEvents(date) {
-      return this.events.filter(
-        (event) => event.start.getDate() === date.getDate()
-      );
+      return this.events.filter((event) => isSameDay(event.start, date));
     },
   },
 
