@@ -26,6 +26,11 @@ export default {
           end: new Date("2023-03-26T15:00:00+02:00"),
           title: "Meeting",
         },
+        {
+          start: new Date("2023-09-03T00:00:00+01:00"),
+          end: new Date("2023-09-03T23:59:59+01:00"),
+          title: "Turn the calendar",
+        },
       ],
       showDetails: false,
       selectedDay: null,

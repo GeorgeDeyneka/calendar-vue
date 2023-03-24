@@ -60,7 +60,7 @@ export default {
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  height: 60px;
+  height: 50px;
   background-color: #2d2e34;
   border-radius: 4px;
   color: #d1d1d1;
@@ -69,11 +69,10 @@ export default {
     position: absolute;
     top: 5px;
     right: 5px;
-    max-width: 50px;
-    line-height: 1;
-    padding: 5px;
-    font-size: 14px;
-    border-radius: 10px;
+    width: 12px;
+    height: 12px;
+    font-size: 0px;
+    border-radius: 50%;
     background-color: #318eb1;
   }
 
@@ -94,5 +93,20 @@ export default {
 
 .previous-month {
   color: #595959;
+}
+
+@media (min-width: 768px) {
+  .item {
+    height: 60px;
+
+    &__event {
+      width: 50px;
+      height: auto;
+      line-height: 1;
+      padding: 5px;
+      font-size: 14px;
+      border-radius: 10px;
+    }
+  }
 }
 </style>

@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 20px 3px;
   min-height: 100vh;
   max-width: 1024px;
   font-family: Arial, sans-serif;
@@ -39,9 +39,15 @@ export default {
 
 .calendar {
   margin: 0 auto;
-  width: 600px;
+  max-width: 600px;
   border: 1px solid #303030;
   border-radius: 5px;
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 50px 0;
+  }
 }
 </style>

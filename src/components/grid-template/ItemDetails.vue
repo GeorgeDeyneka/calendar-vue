@@ -56,6 +56,7 @@ export default {
   align-items: center;
   background-color: #2d2e34;
   padding: 10px;
+  gap: 10px;
 
   &__info {
     flex-grow: 1;
