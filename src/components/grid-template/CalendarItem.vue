@@ -8,6 +8,11 @@ export default {
       required: true,
     },
 
+    events: {
+      type: Array,
+      required: true,
+    },
+
     isPreviousMonth: {
       type: Boolean,
       required: true,
@@ -25,6 +30,8 @@ export default {
 <template>
   <div class="item" :class="{ 'previous-month': isPreviousMonth }">
     {{ formatDate(dayData, "d") }}
+    <div v-if="events.length" class="event-point">
+    </div>
   </div>
 </template>
 
@@ -32,6 +39,7 @@ export default {
 @import "@/assets/mixins.scss";
 
 .item {
+  position: relative;
   @include flex-center;
   font-size: 16px;
   cursor: pointer;
@@ -44,8 +52,18 @@ export default {
     background-color: #494d52;
   }
 
-  &.previous-month {
+  .previous-month {
     color: #595959;
+  }
+
+  .event-point {
+    background-color: #318eb1;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
   }
 }
 </style>

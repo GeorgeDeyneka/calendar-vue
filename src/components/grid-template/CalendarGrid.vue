@@ -17,13 +17,15 @@ export default {
   },
 
   data() {
-    events: [
-      {
-        start: new Date("2023-03-26T14:00:00+02:00"),
-        end: new Date("2023-03-26T15:00:00+02:00"),
-        title: "Meeting",
-      },
-    ];
+    return {
+      events: [
+        {
+          start: new Date("2023-03-26T14:00:00+02:00"),
+          end: new Date("2023-03-26T15:00:00+02:00"),
+          title: "Meeting",
+        },
+      ],
+    };
   },
 
   components: {
@@ -33,6 +35,12 @@ export default {
   methods: {
     isPreviousMonth(date) {
       return isBefore(date, this.startOfMonth);
+    },
+
+    getEvents(date) {
+      return this.events.filter(
+        (event) => event.start.getDate() === date.getDate()
+      );
     },
   },
 
@@ -62,6 +70,7 @@ export default {
       :key="day"
       :dayData="day"
       :isPreviousMonth="isPreviousMonth(day)"
+      :events="getEvents(day)"
     />
   </div>
 </template>
