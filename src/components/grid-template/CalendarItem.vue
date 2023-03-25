@@ -57,13 +57,15 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: end;
+  height: 50px;
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  height: 50px;
   background-color: #2d2e34;
   border-radius: 4px;
   color: #d1d1d1;
+  user-select: none;
+  transition: background-color ease-in 300ms;
 
   &__event {
     position: absolute;
@@ -83,7 +85,7 @@ export default {
   }
 
   &:hover {
-    background-color: #494d52;
+    opacity: 0.8;
   }
 }
 
