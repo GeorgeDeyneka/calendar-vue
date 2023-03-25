@@ -40,8 +40,52 @@ This is my test case within Vue.js. I am using Vue3 framework and date-fns libra
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-<!-- ## Usage -->
 
+## Usage
+
+### Main Page
+<div>
+  <ul>
+    <li>
+    Expanding the application, you will see a calendar grid in front of you, lined up from Monday to Sunday.
+    </li>
+    </br>
+    <li>
+    You can switch months using the arrows at the top. Note that the last month's numbers have different styles, which simplifies the visual interface.
+    </li>
+  </ul>
+  </br>
+<img src="demo-images/main-page.png" alt="main-page-demo" width="1000">
+</div>
+
+</br>
+
+---
+
+### Events in calendar
+<div>
+  <ul>
+    <li>
+    So, if you switch to March 2023, look out for the 26th. There is a mark here that indicates that an event is scheduled for that day.
+    </li>
+    </br>
+    <li>
+    Just click on that day and you will see the full details of the scheduled event.
+    </li>
+    </br>
+    <li>
+    For convenience, the day you are viewing information will be marked with a special color in the calendar.
+    </li>
+    </br>
+    <li>
+    So, you have viewed an event, but you want to hide information about this day and events. Just click on the "Close" button and the block will be hidden.
+    </li>
+  </ul>
+  </br>
+<img src="demo-images/details-info.png" alt="details-info" width="1000">
+</div>
+
+</br>
 
 ## Contributing
 
