@@ -11,21 +11,20 @@ So, if you want to look at the project's code and deploy it, follow the steps be
 
 1. Clone the repo
 ```sh
-git clone https://github.com/GeorgeDeyneka/RickMortyCharactersLib.git
+git clone https://github.com/GeorgeDeyneka/VueCalendar.git
 ```
 2. Install NPM packages
 ```sh
 npm install
 ```
-3. Run this command for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+3. Run this command for a dev server. Navigate to `http://localhost:5174/`. The application will automatically reload if you change any of the source files.
 ```sh
 npm run dev
 ```
 
 ## About project
 
-This template should help get you started developing with Vue 3 in Vite.
-
+This is my test case within Vue.js. I am using Vue3 framework and date-fns library.
 
 ### Built With
 
