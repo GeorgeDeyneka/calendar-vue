@@ -2,8 +2,8 @@
 
 ## Get Started
 
-If you want to see the project without deploying it locally, you can follow this link to GitHub Pages: 
-https://georgedeyneka.github.io/VueCalendar/
+<!-- If you want to see the project without deploying it locally, you can follow this link to GitHub Pages: 
+https://georgedeyneka.github.io/VueCalendar/ -->
 
 So, if you want to look at the project's code and deploy it, follow the steps below in the "Installation" section.
 
