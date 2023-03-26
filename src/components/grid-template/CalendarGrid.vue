@@ -7,6 +7,7 @@ import {
   eachDayOfInterval,
   isSameDay,
 } from "date-fns";
+import { zonedTimeToUtc } from "date-fns-tz";
 import CalendarItem from "./CalendarItem.vue";
 import ItemDetails from "./ItemDetails.vue";
 
@@ -19,16 +20,18 @@ export default {
   },
 
   data() {
+    const KYIV_TZ = "Europe/Kiev";
+
     return {
       events: [
         {
-          start: new Date("2023-03-26T14:00:00"),
-          end: new Date("2023-03-26T15:00:00"),
+          start: zonedTimeToUtc(new Date("2023-03-26T14:00:00"), KYIV_TZ),
+          end: zonedTimeToUtc(new Date("2023-03-26T15:00:00"), KYIV_TZ),
           title: "Meeting",
         },
         {
-          start: new Date("2023-09-03T00:00:00"),
-          end: new Date("2023-09-03T23:59:59"),
+          start: zonedTimeToUtc(new Date("2023-09-03T00:00:00"), KYIV_TZ),
+          end: zonedTimeToUtc(new Date("2023-09-03T23:59:59"), KYIV_TZ),
           title: "Turn the calendar",
         },
       ],
