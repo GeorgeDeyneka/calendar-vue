@@ -30,8 +30,8 @@ export default {
           title: "Meeting",
         },
         {
-          start: zonedTimeToUtc(new Date("2023-09-03T00:00:00"), KYIV_TZ),
-          end: zonedTimeToUtc(new Date("2023-09-03T23:59:59"), KYIV_TZ),
+          start: zonedTimeToUtc(new Date("2023-09-03T02:00:00"), KYIV_TZ),
+          end: zonedTimeToUtc(new Date("2023-09-03T01:59:59"), KYIV_TZ),
           title: "Turn the calendar",
         },
       ],
