@@ -2,7 +2,7 @@
   "name": "vue-calendar",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://georgedeyneka.github.io/VueCalendar/",
+  "homepage": "https://georgedeyneka.github.io/calendar-vue/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
