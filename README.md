@@ -3,7 +3,7 @@
 ## Get Started
 
 If you want to see the project without deploying it locally, you can follow this link to GitHub Pages: 
-https://georgedeyneka.github.io/VueCalendar/
+https://georgedeyneka.github.io/calendar-vue/
 
 So, if you want to look at the project's code and deploy it, follow the steps below in the "Installation" section.
 
@@ -11,7 +11,7 @@ So, if you want to look at the project's code and deploy it, follow the steps be
 
 1. Clone the repo
 ```sh
-git clone https://github.com/GeorgeDeyneka/VueCalendar.git
+git clone https://github.com/GeorgeDeyneka/calendar-vue.git
 ```
 2. Install NPM packages
 ```sh
@@ -106,7 +106,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## My Contacts (Links)
 
-- <a href="https://www.linkedin.com/in/george-deyneka-910003238/">
+- <a href="https://www.linkedin.com/in/george-deyneka/">
     <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
   </a> 
 - <a href="https://t.me/Deyneka_George">
